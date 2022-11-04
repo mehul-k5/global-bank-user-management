@@ -1,48 +1,39 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import '../login.css'
 import base_url from '../api/bootapi';
 import axios from "axios";
-
 export default function Login() {
-    const sendData=()=>{
-            console.log("in handler");
-           /* axios.get(`${base_url}/login`,JSON.stringify({ username, password }))
-            .then((response)=>{
-                console.log("success");
-                console.log(response);
-            },(error)=>{
-                console.log("error");
-                console.log(error)
-            }
     
-            );*/
+    const sendData=(e)=>{
+            e.preventDefault();
             axios({
                 method: "post",
-                url: `${base_url}/login`,
-                data: dataInput,
-                headers: { "Content-Type": "multipart/form-data" },
+                url:`${base_url}/login`,
+                data: {userId:username,password:password},
+                headers: { "Content-Type": 'application/json' },
               })
                 .then(function (response) {
                   //handle success
-                  console.log(response);
+                  if(response.data==="successful"){
+                   console.log(response);
+                  }
+                  else{
+                   console.log(response);
+                  }
+                  
                 })
                 .catch(function (response) {
                   //handle error
                   console.log(response);
+                  
                 });
          
     };
   const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
-  const[dataInput, setDataInput]=useState(""); 
-  const submitThis=()=>{
-	const info={username:username,password:password}; 
-	setDataInput([info]);
-    sendData();
-}
+  const [password, setPassword] = useState(); 
   return( 
     <div className="login-form">
-    <form action="" onSubmit={submitThis}>
+    <form action="">
       <h1>Login</h1>
       <div className="content">
         <div className="input-field">
@@ -53,9 +44,10 @@ export default function Login() {
         </div>
       </div>
       <div className="action">
-        <button type="submit">Sign in</button>
+        <button type="submit" onClick={sendData}>Sign in</button>
       </div>
     </form>
   </div>
   )
 }
+   
