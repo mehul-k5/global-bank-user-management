@@ -12,11 +12,10 @@ public class User {
 	String user_id;
 	@Column
 	String password;
-	public User() {
+	public User() { 
 		
 	}
 	public User(String userId, String password) {
-		super();
 		this.user_id = userId;
 		this.password = password;
 	}

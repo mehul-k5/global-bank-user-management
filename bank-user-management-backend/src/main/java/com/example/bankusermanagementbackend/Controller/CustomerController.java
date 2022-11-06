@@ -11,22 +11,21 @@ import com.example.bankusermanagementbackend.Service.CustomerRegisterService;
 import com.example.bankusermanagementbackend.Service.LoginService;
 import com.example.bankusermanagementbackend.model.User;
 import com.example.bankusermanagementbackend.model.customer_master;
-
 @RestController
 @CrossOrigin
-public class UserController {
+public class CustomerController {
 	@Autowired
-	LoginService loginServ;
-	
-	
-	@PostMapping("/login")
-	public String validate(@RequestBody User user) {
-		if(loginServ.validateUser(user)) {
-			return "successful";
-		}
-		else 
-			return "failed";
-	}
-	
+	CustomerRegisterService custServ;
+	@Autowired
+	LoginService log_serv;
 
+	@PostMapping("/register/{password}")
+	public customer_master addCustomer(@RequestBody customer_master cust,@PathVariable("password") String password) {
+		
+		customer_master c=custServ.insertCustomer(cust);
+		System.out.println(cust.getCustomer_number());
+		log_serv.add(new User(cust.getCustomer_number(),password));
+		return c;
+		
+	}
 }
