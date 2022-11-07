@@ -14,6 +14,9 @@ public class branch_master {
 	String branch_name;
 	@Column
 	String branch_city;
+	public branch_master() {
+		
+	}
 	public branch_master(String branch_id, String branch_name, String branch_city) {
 		super();
 		this.branch_id = branch_id;
