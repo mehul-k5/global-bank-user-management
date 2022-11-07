@@ -1,10 +1,13 @@
 import React, {useState } from 'react';
+import { useNavigate,Link } from "react-router-dom";
 import '../login.css'
 import base_url from '../api/bootapi';
 import axios from "axios";
+
 export default function Login() {
-    
+    const navigate = useNavigate();
     const sendData=(e)=>{
+           
             e.preventDefault();
             axios({
                 method: "post",
@@ -14,18 +17,22 @@ export default function Login() {
               })
                 .then(function (response) {
                   //handle success
+                 
                   if(response.data==="successful"){
                    console.log(response);
+                   navigate("/menu");
                   }
                   else{
                    console.log(response);
+                   navigate("/register");
                   }
                   
                 })
                 .catch(function (response) {
                   //handle error
                   console.log(response);
-                  
+                  alert("error occured,enter proper details");
+                  navigate("/login")
                 });
          
     };
@@ -47,6 +54,7 @@ export default function Login() {
         <button type="submit" onClick={sendData}>Sign in</button>
       </div>
     </form>
+    <p>new user? <Link to="/register">register</Link></p>
   </div>
   )
 }
