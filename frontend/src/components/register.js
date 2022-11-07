@@ -2,23 +2,28 @@ import React, {useState } from 'react';
 import '../register.css'
 import base_url from '../api/bootapi';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 export default function Register() {
-    
+    const navigate = useNavigate();
     const sendData=(e)=>{
+      
             e.preventDefault();
             axios({
                 method: "post",
-                url:`${base_url}/register`,
-                data: {customerNumber:customernumber,firstName:firstname,lastName:lastname,customerCity:customercity,customerOccupation:customeroccupation,dateOfBirth:dateofbirth,password:password},
+                url:`${base_url}/register/${password}`,
+                data: {customer_number:customernumber,firstname:firstname,middlename:middlename,lastname:lastname,customer_city:customercity,customer_contact_no:contact,occupation:customeroccupation,customer_date_of_birth:dateofbirth},
                 headers: { "Content-Type": 'application/json' },
               })
                 .then(function (response) {
                   //handle success
-                  if(response.data==="successful"){
+                  if(response.data!=null){
                    console.log(response);
+                   navigate("/login");
                   }
                   else{
                    console.log(response);
+                   alert("enter correct details to register successfully");
+                   navigate("/register");
                   }
                   
                 })
@@ -32,10 +37,12 @@ export default function Register() {
   const [customernumber, setCustomerNumber] = useState();
   const [firstname, setFirstName] = useState(); 
   const [lastname, setLastName] = useState(); 
+  const [middlename,setMiddleName]=useState();
   const [customercity, setCustomercity] = useState();
   const [customeroccupation, setCustomerOccupation] = useState();
   const [dateofbirth, setDateOfBirth] = useState();
   const [password, setPassword] = useState();
+  const [contact,setContact]=useState();
 
   return( 
     <div className="register-form">
@@ -51,6 +58,9 @@ export default function Register() {
             <label for="First Name">First Name:</label>
             <input type="text" id="firstname" name="First Name" placeholder="abcdef" required onChange={e => setFirstName(e.target.value)}/>
             <br></br>
+            <label for="Middle Name">Middle Name:</label>
+            <input type="text" id="middlename" name="Middle Name" placeholder="abcdef" required onChange={e => setMiddleName(e.target.value)}/>
+            <br></br>
             <br></br>
             <label for="Last Name">Last Name:</label>
             <input type="text" id="lastname" name="Last Name" placeholder="abcdef" required onChange={e => setLastName(e.target.value)}/>
@@ -65,8 +75,10 @@ export default function Register() {
             <br></br>
             <br></br>
             <label for="Date Of Birth">Date Of Birth:</label>
-            <input type="text" id="dateofbirth" name="Date Of birth" placeholder="DD-MM-YYYY" required onChange={e => setDateOfBirth(e.target.value)}/>
+            <input type="text" id="dateofbirth" name="Date Of birth" placeholder="YYYY-MM-DD" required onChange={e => setDateOfBirth(e.target.value)}/>
             <br></br>
+            <label for="Contact number">Contact number:</label>
+            <input type="text" id="contact" name="contact" placeholder="" required onChange={e => setContact(e.target.value)}/>
             <br></br>
             <label for="Password">Password:</label>
             <input type="password" placeholder="Password" required onChange={e=>setPassword(e.target.value)}/>
