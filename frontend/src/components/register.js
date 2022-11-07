@@ -9,7 +9,7 @@ export default function Register() {
             axios({
                 method: "post",
                 url:`${base_url}/register`,
-                data: {customerNumber:customernumber,firstName:firstname,lastName:lastname,customerCity:customercity,customerOccupation:customeroccupation,dateOfBirth:dateofbirth},
+                data: {customerNumber:customernumber,firstName:firstname,lastName:lastname,customerCity:customercity,customerOccupation:customeroccupation,dateOfBirth:dateofbirth,password:password},
                 headers: { "Content-Type": 'application/json' },
               })
                 .then(function (response) {
@@ -35,6 +35,7 @@ export default function Register() {
   const [customercity, setCustomercity] = useState();
   const [customeroccupation, setCustomerOccupation] = useState();
   const [dateofbirth, setDateOfBirth] = useState();
+  const [password, setPassword] = useState();
 
   return( 
     <div className="register-form">
@@ -65,6 +66,10 @@ export default function Register() {
             <br></br>
             <label for="Date Of Birth">Date Of Birth:</label>
             <input type="text" id="dateofbirth" name="Date Of birth" placeholder="DD-MM-YYYY" required onChange={e => setDateOfBirth(e.target.value)}/>
+            <br></br>
+            <br></br>
+            <label for="Password">Password:</label>
+            <input type="password" placeholder="Password" required onChange={e=>setPassword(e.target.value)}/>
 
         </div>
     
