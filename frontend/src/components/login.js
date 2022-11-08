@@ -22,6 +22,7 @@ export default function Login() {
                  
                   if(response.data==="successful"){
                    console.log(response);
+                   localStorage.setItem('customerNum',username);
                    navigate("/menu");
                   }
                   else{

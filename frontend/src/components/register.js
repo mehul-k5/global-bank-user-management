@@ -82,7 +82,7 @@ export default function Register() {
             <br></br>
             <br></br>
             <label for="Date Of Birth">Date Of Birth:</label>
-            <input type="date" id="dateofbirth" name="Date Of birth" placeholder="YYYY-MM-DD" required onChange={e => setDateOfBirth(e.target.value)}/>
+            <input type="text" id="dateofbirth" name="Date Of birth" placeholder="YYYY-MM-DD" required onChange={e => setDateOfBirth(e.target.value)}/>
             <br></br>
             <br></br>
             <label for="Contact number">Contact number:</label>

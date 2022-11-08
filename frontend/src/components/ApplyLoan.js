@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { useNavigate,Link } from "react-router-dom";
 import '../applyLoan.css'
 import base_url from '../api/bootapi';
@@ -38,16 +38,14 @@ export default function ApplyLoan() {
                 headers: { "Content-Type": 'application/json' },
               })
                 .then(function (response) {
-                  //handle success
-                 
-                  if(response.data==="true"){
-                   console.log(response);
+                  console.log(response);
+                  if(response.data==true){
                    alert("Loan application submitted successfully");
                    navigate("/menu");
                   }
                   else{
-                   console.log(response);
-                   navigate("/register");
+                   alert("enter appropriate details");
+                   navigate("/applyLoan");
                   }
                   
                 })
@@ -59,6 +57,10 @@ export default function ApplyLoan() {
                 });
          
     };
+    useEffect(()=>{
+      const user=localStorage.getItem("customerNum");
+      setCustomerNumber(user);
+    })
     
     const [customerNumber, setCustomerNumber] = useState();
     const [branch, setBranch] = useState(); 
@@ -72,12 +74,12 @@ export default function ApplyLoan() {
         <div className="content">
           <div className="input-field">
             <label for="Customer number">Customer number:</label>
-            <input type="text" placeholder="Customer number" required onChange={e => setCustomerNumber(e.target.value)}/>
+            {customerNumber}
           </div>
           <div className="input-field">
-            <label for="branch">Branch:</label>
-            
-            <select onChange={e => setBranch(e.target.value)}>
+            <label for="branch">Branch:</label> 
+            <select onChange={e => setBranch(e.target.value)} defaultValue={"default"}>
+              <option value={"default"} disabled>choose</option>
               {branches.map(item => (
                   <option key={item.branch_id} value={item.branch_id}>{item.branch_name} </option>
               ))}
