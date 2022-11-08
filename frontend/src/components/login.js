@@ -54,7 +54,7 @@ export default function Login() {
         <button type="submit" onClick={sendData}>Sign in</button>
       </div>
     </form>
-    <p>new user? <Link to="/register">register</Link></p>
+    <p>New user? <Link to="/register">Register</Link></p>
   </div>
   )
 }

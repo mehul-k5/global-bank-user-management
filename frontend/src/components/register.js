@@ -56,29 +56,31 @@ export default function Register() {
             <br></br>
             <br></br>
             <label for="First Name">First Name:</label>
-            <input type="text" id="firstname" name="First Name" placeholder="abcdef" required onChange={e => setFirstName(e.target.value)}/>
+            <input type="text" id="firstname" name="First Name" placeholder="John" required onChange={e => setFirstName(e.target.value)}/>
             <br></br>
             <label for="Middle Name">Middle Name:</label>
-            <input type="text" id="middlename" name="Middle Name" placeholder="abcdef" required onChange={e => setMiddleName(e.target.value)}/>
+            <input type="text" id="middlename" name="Middle Name" placeholder="A" required onChange={e => setMiddleName(e.target.value)}/>
             <br></br>
             <br></br>
             <label for="Last Name">Last Name:</label>
-            <input type="text" id="lastname" name="Last Name" placeholder="abcdef" required onChange={e => setLastName(e.target.value)}/>
+            <input type="text" id="lastname" name="Last Name" placeholder="Doe" required onChange={e => setLastName(e.target.value)}/>
             <br></br>
             <br></br>
             <label for="Customer City">Customer City:</label>
-            <input type="text" id="customercity" name="Customer City" placeholder="abcdef" required onChange={e => setCustomercity(e.target.value)}/>
+            <input type="text" id="customercity" name="Customer City" placeholder="Mumbai" required onChange={e => setCustomercity(e.target.value)}/>
             <br></br>
             <br></br>
             <label for="Customer Occupation">Customer Occupation:</label>
-            <input type="text" id="customeroccupation" name="Customer Occupation" placeholder="abcdef" required onChange={e => setCustomerOccupation(e.target.value)}/>
+            <input type="text" id="customeroccupation" name="Customer Occupation" placeholder="Engineer" required onChange={e => setCustomerOccupation(e.target.value)}/>
             <br></br>
             <br></br>
             <label for="Date Of Birth">Date Of Birth:</label>
-            <input type="text" id="dateofbirth" name="Date Of birth" placeholder="YYYY-MM-DD" required onChange={e => setDateOfBirth(e.target.value)}/>
+            <input type="date" id="dateofbirth" name="Date Of birth" placeholder="DD-MM-YYYY" required onChange={e => setDateOfBirth(e.target.value)}/>
+            <br></br>
             <br></br>
             <label for="Contact number">Contact number:</label>
-            <input type="text" id="contact" name="contact" placeholder="" required onChange={e => setContact(e.target.value)}/>
+            <input type="text" id="contact" name="contact" placeholder="9876543210" required onChange={e => setContact(e.target.value)}/>
+            <br></br>
             <br></br>
             <label for="Password">Password:</label>
             <input type="password" placeholder="Password" required onChange={e=>setPassword(e.target.value)}/>
