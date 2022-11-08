@@ -3,6 +3,8 @@ import { useNavigate,Link } from "react-router-dom";
 import '../login.css'
 import base_url from '../api/bootapi';
 import axios from "axios";
+import MyHeader from './MyHeader.js';
+import MyFooter from './MyFooter';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -39,6 +41,8 @@ export default function Login() {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState(); 
   return( 
+    <div className="login">
+    <MyHeader/>
     <div className="login-form">
     <form action="">
       <h1>Login</h1>
@@ -54,7 +58,10 @@ export default function Login() {
         <button type="submit" onClick={sendData}>Sign in</button>
       </div>
     </form>
+    <br/><br/>
     <p>New user? <Link to="/register">Register</Link></p>
+  </div>
+  <MyFooter/>
   </div>
   )
 }

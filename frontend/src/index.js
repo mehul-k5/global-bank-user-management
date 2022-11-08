@@ -4,9 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from './components/login.js'
+import Login from './components/Login.js'
 import Register from './components/register.js'
 import Menu from './components/menu.js'
+import ViewStatement from './components/viewStatement';
+import ApplyLoan from './components/ApplyLoan';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,6 +20,8 @@ root.render(
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="menu" element={<Menu />} />
+        <Route path="viewStatement" element={<ViewStatement/>}/>
+        <Route path="applyLoan" element={<ApplyLoan/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

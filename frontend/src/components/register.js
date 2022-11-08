@@ -3,6 +3,8 @@ import '../register.css'
 import base_url from '../api/bootapi';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import MyHeader from './MyHeader.js';
+import MyFooter from './MyFooter';
 export default function Register() {
     const navigate = useNavigate();
     const sendData=(e)=>{
@@ -45,14 +47,19 @@ export default function Register() {
   const [contact,setContact]=useState();
 
   return( 
+    <div>
+      <MyHeader/>
     <div className="register-form">
+    
     <form action="">
       <h1>Register</h1>
       <br></br>
       <div className="content">
         <div className="input-field">
+            <span>
             <label for="Customer Number">Customer Number:</label>
             <input type="text" id="customernumber" name="Customer Number" placeholder="123456" required onChange={e => setCustomerNumber(e.target.value)}/>
+            </span>
             <br></br>
             <br></br>
             <label for="First Name">First Name:</label>
@@ -75,7 +82,7 @@ export default function Register() {
             <br></br>
             <br></br>
             <label for="Date Of Birth">Date Of Birth:</label>
-            <input type="date" id="dateofbirth" name="Date Of birth" placeholder="DD-MM-YYYY" required onChange={e => setDateOfBirth(e.target.value)}/>
+            <input type="date" id="dateofbirth" name="Date Of birth" placeholder="YYYY-MM-DD" required onChange={e => setDateOfBirth(e.target.value)}/>
             <br></br>
             <br></br>
             <label for="Contact number">Contact number:</label>
@@ -92,6 +99,8 @@ export default function Register() {
         <button type="submit" onClick={sendData}>Register</button>
       </div>
     </form>
+  </div>
+  <MyFooter/>
   </div>
   )
 }
