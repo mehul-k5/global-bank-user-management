@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="account_master")
-public class account_master {
+public class AccountMaster {
 	@Id
 	String account_number;
 	@Column
@@ -24,10 +24,10 @@ public class account_master {
 	String account_type;
 	@Column
 	String account_status;
-	public account_master() {
+	public AccountMaster() {
 		
 	}
-	public account_master(String account_number, String customer_number, String branch_id, Long opening_balance,
+	public AccountMaster(String account_number, String customer_number, String branch_id, Long opening_balance,
 			Date account_opening_date, String account_type, String account_status) {
 		super();
 		this.account_number = account_number;

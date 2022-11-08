@@ -7,17 +7,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="branch_master")
-public class branch_master {
+public class BranchMaster {
 	@Id
 	String branch_id;
 	@Column
 	String branch_name;
 	@Column
 	String branch_city;
-	public branch_master() {
+	public BranchMaster() {
 		
 	}
-	public branch_master(String branch_id, String branch_name, String branch_city) {
+	public BranchMaster(String branch_id, String branch_name, String branch_city) {
 		super();
 		this.branch_id = branch_id;
 		this.branch_name = branch_name;

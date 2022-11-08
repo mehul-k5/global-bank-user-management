@@ -7,14 +7,34 @@ import MyHeader from './MyHeader.js';
 import MyFooter from './MyFooter';
 
 export default function ApplyLoan() {
+
     const navigate = useNavigate();
-    const sendData=(e)=>{
+    const [branches, setBranches] = React.useState([]);
+    React.useEffect(() => {
+      async function getBranches() {
+        axios({
+          method: "get",
+          url:`${base_url}/branches`
+        })
+          .then(function (response) {
+            setBranches(response.data);
+            console.log(branches);
            
+          })
+          .catch((e) => {
+          console.log(e);
+        });
+       
+      }
+      getBranches();
+    }, []);
+    const sendData=(e)=>{
+           console.log("branch issssss ",branch);
             e.preventDefault();
             axios({
                 method: "post",
                 url:`${base_url}/apply`,
-                data: {customer_number:customerNumber,branch_id:branch,loanAmount:loanAmount},
+                data: {customer_number:customerNumber,branch_id:branch,loan_amount:loanAmount},
                 headers: { "Content-Type": 'application/json' },
               })
                 .then(function (response) {
@@ -39,10 +59,7 @@ export default function ApplyLoan() {
                 });
          
     };
-    const options=[
-        {value: 'san francisco',name:'san francisco'},
-        {value:'chicago',name:'chicago'}
-    ]
+    
     const [customerNumber, setCustomerNumber] = useState();
     const [branch, setBranch] = useState(); 
     const [loanAmount,setLoanAmount]=useState();
@@ -61,8 +78,8 @@ export default function ApplyLoan() {
             <label for="branch">Branch:</label>
             
             <select onChange={e => setBranch(e.target.value)}>
-              {options.map(item => (
-                  <option key={item.value} value={item.name}>{item.name} </option>
+              {branches.map(item => (
+                  <option key={item.branch_id} value={item.branch_id}>{item.branch_name} </option>
               ))}
              </select>
              

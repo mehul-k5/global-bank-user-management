@@ -9,14 +9,14 @@ import javax.persistence.Table;
 @Entity
 @IdClass(LoanId.class)
 @Table(name="loan_details")
-public class loan_details {
+public class LoanDetails {
 	@Id
 	String customer_number;
 	@Id
 	String branch_id;
 	@Column 
 	long loan_amount;
-	public loan_details(String customer_number, String branch_id, long loan_amount) {
+	public LoanDetails(String customer_number, String branch_id, long loan_amount) {
 		super();
 		this.customer_number = customer_number;
 		this.branch_id = branch_id;
@@ -40,7 +40,7 @@ public class loan_details {
 	public void setLoan_amount(long loan_amount) {
 		this.loan_amount = loan_amount;
 	}
-	public loan_details() {
+	public LoanDetails() {
 		
 	}
 }

@@ -14,8 +14,8 @@ export default function ViewStatement() {
             e.preventDefault();
             axios({
                 method: "post",
-                url:`${base_url}/viewStatement`,
-                data: {customer_number:customerNumber,transaction_type:transactionType,from_date:fromDate,to_date:toDate},
+                url:`${base_url}/statement`,
+                data: {customer_number:customerNumber,type_of_transaction:transactionType,fromDate:fromDate,toDate:toDate},
                 headers: { "Content-Type": 'application/json' },
               })
                 .then(function (response) {

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.bankusermanagementbackend.Dao.customer_masterDao;
-import com.example.bankusermanagementbackend.model.customer_master;
+import com.example.bankusermanagementbackend.model.CustomerMaster;
 
 @Service
 public class CustomerRegisterService {
@@ -13,7 +13,7 @@ public class CustomerRegisterService {
 	
 	
 	
-	public customer_master insertCustomer(customer_master cust) {
+	public CustomerMaster insertCustomer(CustomerMaster cust) {
 		return cust_dao.save(cust);
 	}
 	

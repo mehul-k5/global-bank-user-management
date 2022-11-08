@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="customer_master")
-public class customer_master {
+public class CustomerMaster {
 	@Id
 	String customer_number;
 	
@@ -75,7 +75,7 @@ public class customer_master {
 		this.customer_date_of_birth = customer_date_of_birth;
 	}
 	
-	public customer_master(String customer_number, String firstname, String middlename, String lastname,
+	public CustomerMaster(String customer_number, String firstname, String middlename, String lastname,
 			String customer_city, String customer_contact_no, String occupation, Date customer_date_of_birth) {
 		super();
 		this.customer_number = customer_number;
@@ -87,7 +87,7 @@ public class customer_master {
 		this.occupation = occupation;
 		this.customer_date_of_birth = customer_date_of_birth;
 	}
-	public customer_master() {
+	public CustomerMaster() {
 		
 	}
 
