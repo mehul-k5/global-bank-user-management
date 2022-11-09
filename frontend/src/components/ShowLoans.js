@@ -22,7 +22,7 @@ export default function ShowLoans() {
             console.log(response);
             setLoans(response.data);
             console.log(Loans);
-            if(Loans.length==0)
+            if(response.data.length==0)
             {
                 alert("There are no loans");
                 navigate("/menu")
