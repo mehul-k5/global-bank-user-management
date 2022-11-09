@@ -1,5 +1,8 @@
 package com.example.bankusermanagementbackend.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +24,15 @@ public class LoanApplicationService {
 			return false;
 	}
 	
+	public List<LoanDetails> getAppliedLoans(String cust_no){
+		List<LoanDetails> loans=loanDao.findAll();
+		List<LoanDetails> appliedLoans=new ArrayList();
+		for(LoanDetails l:loans) {
+			if(l.getCustomer_number().equals(cust_no)) {
+				appliedLoans.add(l);
+			}
+		}
+		return appliedLoans;
+	}
 
 }

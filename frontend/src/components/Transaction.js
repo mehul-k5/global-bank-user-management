@@ -8,6 +8,10 @@ import MyFooter from './MyFooter';
 
 export default function Transaction() {
     const navigate = useNavigate();
+    const options=[
+        {value: 'deposit',name:'deposit'},
+        {value:'withdraw',name:'withdraw'}
+      ]
     const sendData=(e)=>{
             e.preventDefault();
             axios({
@@ -18,8 +22,8 @@ export default function Transaction() {
               })
                 .then(function (response) {
                   console.log(response);
-                  if(response.data==true){
-                   alert("Transaction submitted successfully");
+                  if(response.data.status==="true"){
+                   alert("Transaction submitted successfully,your available balance is "+response.data.balance);
                    navigate("/menu");
                   }
                   else{
@@ -67,14 +71,15 @@ export default function Transaction() {
             <label for="Account Number">Account Number</label>
             <input type="text" required onChange={e=>setAccountNumber(e.target.value)}/>
           </div>
-          {/* <div className="input-field">
-            <label for="Date">Date</label>
-            <input type="number" required onChange={e=>setLoanAmount(e.target.value)}/>
-          </div> */}
-          <div className="input-field">
-            <label for="Type of Transaction">Type of Transaction (Withdraw, Deposit)</label>
-            <input type="text" required onChange={e=>setTransactionType(e.target.value)}/>
-          </div>
+            <div className="input-field">
+          <label for="transaction type">Transaction type:</label>
+            <select onChange={e => setTransactionType(e.target.value)}  defaultValue={"default"}>
+            <option value={"default"} disabled>choose</option>
+            {options.map(item => (
+                <option key={item.value} value={item.name}>{item.name} </option>
+            ))}
+           </select>
+           </div>
           <div className="input-field">
             <label for="Medium of Transaction">Medium of Transaction</label>
             <input type="text" required onChange={e=>setMediumOfTransaction(e.target.value)}/>

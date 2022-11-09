@@ -10,9 +10,11 @@ import com.example.bankusermanagementbackend.model.TransactionDetails;
 public class TransactionManagementService {
 	@Autowired
 	transaction_detailsDao transactionDao;
+	
 	public boolean insertTransaction(TransactionDetails transaction) {
 		if(transactionDao.save(transaction) != null)
 		{
+		   
 		   return true;
 			
 		}

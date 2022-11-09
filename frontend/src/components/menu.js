@@ -17,6 +17,8 @@ export default function Menu() {
             <Link to="/transaction"><button>Transactions</button></Link>
             <br></br><br></br>
             <Link to="/viewStatement"><button>View Statement</button></Link>
+            <br></br><br></br>
+            <Link to="/showLoans"><button>View Applied Loans</button></Link>
         </div>
     </div>
     <MyFooter/>

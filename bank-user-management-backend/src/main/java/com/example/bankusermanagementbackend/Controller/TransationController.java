@@ -1,6 +1,12 @@
 package com.example.bankusermanagementbackend.Controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,12 +26,26 @@ public class TransationController {
 	
 	
 	@PostMapping("/transaction")
-	public boolean addTransaction(@RequestBody TransactionDetails transaction) {
+	public Map<String,String> addTransaction(@RequestBody TransactionDetails transaction) {
+		Map<String,String> res=new HashMap<String,String>();
 		if(trans_serv.insertTransaction(transaction)) {
-			return true;
+			Long balance;
+			if(transaction.getTransaction_type().equals("deposit")) {
+				  balance= acc_serv.creditAmount(transaction.getAccount_number(),transaction.getTransaction_amount());
+			   }
+			   else {
+				  balance= acc_serv.debitAmount(transaction.getAccount_number(),transaction.getTransaction_amount());
+			   }
+			res.put("status","true");
+			res.put("balance",""+balance);
+			return res;
+			
 		}
-		else
-			return false;
+		else {
+			res.put("status","false");
+			return res;
+			
+		}
 	}
 	
 

@@ -15,6 +15,7 @@ export default function ViewStatement() {
     async function sendData(e){
            
             e.preventDefault();
+            console.log(fromDate)
             axios({
                 method: "post",
                 url:`${base_url}/statement`,
@@ -93,11 +94,11 @@ export default function ViewStatement() {
         </div>
         <div className="input-field">
           <label for="from date">Transaction period from:</label>
-          <input type="text" placeholder="YYYY-MM-DD" required onChange={e=>setFromDate(e.target.value)}/>
+          <input type="date" placeholder="YYYY-MM-DD" required onChange={e=>setFromDate(e.target.value)}/>
         </div>
         <div className="input-field">
           <label for="To date">Transaction period to:</label>
-          <input type="text" placeholder="YYYY-MM-DD" required onChange={e=>setToDate(e.target.value)}/>
+          <input type="date" placeholder="YYYY-MM-DD" required onChange={e=>setToDate(e.target.value)}/>
         </div>
       </div>
       <div className="action">

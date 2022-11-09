@@ -24,11 +24,13 @@ public class AccountMaster {
 	String account_type;
 	@Column
 	String account_status;
+	@Column
+	Long current_balance;
 	public AccountMaster() {
 		
 	}
 	public AccountMaster(String account_number, String customer_number, String branch_id, Long opening_balance,
-			Date account_opening_date, String account_type, String account_status) {
+			Date account_opening_date, String account_type, String account_status,Long current_balance) {
 		super();
 		this.account_number = account_number;
 		this.customer_number = customer_number;
@@ -37,6 +39,13 @@ public class AccountMaster {
 		this.account_opening_date = account_opening_date;
 		this.account_type = account_type;
 		this.account_status = account_status;
+		this.current_balance=current_balance;
+	}
+	public Long getCurrent_balance() {
+		return current_balance;
+	}
+	public void setCurrent_balance(Long current_balance) {
+		this.current_balance = current_balance;
 	}
 	public String getAccount_number() {
 		return account_number;
