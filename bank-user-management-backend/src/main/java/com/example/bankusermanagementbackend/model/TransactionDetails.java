@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.GenerationType;
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.GeneratedValue;
 
 
@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 @Table(name="transaction_details")
 public class TransactionDetails {
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
 	String transaction_number;
 	@Column
 	String account_number;

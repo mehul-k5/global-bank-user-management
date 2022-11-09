@@ -9,6 +9,7 @@ import Register from './components/register.js'
 import Menu from './components/menu.js'
 import ViewStatement from './components/viewStatement';
 import ApplyLoan from './components/ApplyLoan';
+import Transaction from './components/Transaction'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,6 +23,7 @@ root.render(
         <Route path="menu" element={<Menu />} />
         <Route path="viewStatement" element={<ViewStatement/>}/>
         <Route path="applyLoan" element={<ApplyLoan/>}/>
+        <Route path="transaction" element={<Transaction/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

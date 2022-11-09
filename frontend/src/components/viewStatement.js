@@ -1,11 +1,12 @@
 import React, {useState,useEffect } from 'react';
-import { useNavigate} from "react-router-dom";
+import { useNavigate,Link} from "react-router-dom";
 import '../viewStatement.css'
 import base_url from '../api/bootapi';
 import axios from "axios";
 import MyHeader from './MyHeader.js';
 import MyFooter from './MyFooter.js';
 import TransactionTable from './TransactionTable';
+
 
 
 export default function ViewStatement() {
@@ -22,10 +23,16 @@ export default function ViewStatement() {
               })
                 .then(function (response) {
                   //handle success
-                
+                  var arr=[];
+                  console.log(response.data)
                   if(response.data.length>0){
+                    response.data.forEach(element => {
+                      element.date_of_transaction=""+element.date_of_transaction;
+                    arr.push(element)
+                    });
                    
-                   setTransactions(response.data);
+                   setTransactions(arr);
+                   setVisible(true)
                    console.log(transactions);
                   
                   }
@@ -38,8 +45,8 @@ export default function ViewStatement() {
                 .catch(function (response) {
                   //handle error
                   console.log(response);
-                  alert("error occured,enter proper details");
-                  navigate("/login")
+                  alert("error occured,enter appropriate details");
+                  navigate("/viewStatement")
                 });
          
     };
@@ -51,12 +58,13 @@ export default function ViewStatement() {
   useEffect(()=>{
     const user=localStorage.getItem("customerNum");
     setCustomerNumber(user);
-  })
+  },[])
   const [customerNumber, setCustomerNumber] = useState();
   const [accountNumber, setAccountNumber] = useState();
   const [fromDate, setFromDate] = useState(); 
   const [toDate,setToDate]=useState();
   const [transactionType,setTransactionType]=useState();
+  const [visible,setVisible]=useState();
   return( 
     <div className="statement">
     <MyHeader/>
@@ -98,7 +106,31 @@ export default function ViewStatement() {
     </form>
    
   </div>
-  <TransactionTable transaction_details={transactions}/>
+  {visible &&
+        <table id="transactionTable">
+            <tr>
+            <td>Transaction_number</td>
+          <td>Account_number</td>
+          <td>Date_of_transaction</td>
+          <td>Medium_of_transaction</td>
+          <td>Transaction_type</td>
+          <td>Transaction_amount</td>
+            </tr>
+         { transactions.map((item,index)=>(
+          <tr data-index={index}>
+          <td>{item.transaction_number}</td>
+          <td>{item.account_number}</td>
+          <td>{item.date_of_transaction}</td>
+          <td>{item.medium_of_transaction}</td>
+          <td>{item.transaction_type}</td>
+          <td>{item.transaction_amount}</td>
+          </tr>
+         )
+          
+        )}
+        </table>
+}
+  <center><Link to="/menu">Back to menu</Link></center>
   <MyFooter/>
   </div>
   )

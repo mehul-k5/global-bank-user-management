@@ -9,7 +9,7 @@
     font-family: 'Rubik', sans-serif;
   }
   
-  .statement-form {
+  .Transaction-form {
     background: #fff;
     width: 700px;
     margin: 65px auto;
@@ -21,18 +21,18 @@
     border-radius: 4px;
     box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
   }
-  .statement-form h1 {
+  .Transaction-form h1 {
     padding: 35px 35px 0 35px;
     font-weight: 300;
   }
-  .statement-form .content {
+  .Transaction-form .content {
     padding: 35px;
     text-align: center;
   }
-  .statement-form .input-field {
+  .Transaction-form .input-field {
     padding: 12px 5px;
   }
-  .statement-form .input-field input {
+  .Transaction-form .input-field input {
     font-size: 16px;
     display: block;
     font-family: 'Rubik', sans-serif;
@@ -44,25 +44,25 @@
     -webkit-transition: all .2s;
     transition: all .2s;
   }
-  .statement-form .input-field input::-webkit-input-placeholder {
+  .Transaction-form .input-field input::-webkit-input-placeholder {
     text-transform: uppercase;
   }
-  .statement-form .input-field input::-moz-placeholder {
+  .Transaction-form .input-field input::-moz-placeholder {
     text-transform: uppercase;
   }
-  .statement-form .input-field input:-ms-input-placeholder {
+  .Transaction-form .input-field input:-ms-input-placeholder {
     text-transform: uppercase;
   }
-  .statement-form .input-field input::-ms-input-placeholder {
+  .Transaction-form .input-field input::-ms-input-placeholder {
     text-transform: uppercase;
   }
-  .statement-form .input-field input::placeholder {
+  .Transaction-form .input-field input::placeholder {
     text-transform: uppercase;
   }
-  .statement-form .input-field input:focus {
+  .Transaction-form .input-field input:focus {
     border-color: #222;
   }
-  .statement-form a.link {
+  .Transaction-form a.link {
     text-decoration: none;
     color: #747474;
     letter-spacing: 0.2px;
@@ -70,14 +70,14 @@
     display: inline-block;
     margin-top: 20px;
   }
-  .statement-form .action {
+  .Transaction-form .action {
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
             flex-direction: row;
   }
-  .statement-form .action button {
+  .Transaction-form .action button {
     width: 100%;
     border: none;
     padding: 18px;
@@ -93,16 +93,16 @@
     -webkit-transition: all .3s;
     transition: all .3s;
   }
-  .statement-form .action button:hover {
+  .Transaction-form .action button:hover {
     background: #d8d8d8;
   }
-  .statement-form .action button:nth-child(2) {
+  .Transaction-form .action button:nth-child(2) {
     background: #2d3b55;
     color: #fff;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 4px;
   }
-  .statement-form .action button:nth-child(2):hover {
+  .Transaction-form .action button:nth-child(2):hover {
     background: #3c4d6d;
   }
   
@@ -117,26 +117,5 @@
     outline: none;
     -webkit-transition: all .2s;
     transition: all .2s;
-  }
-  #transactionTable {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  #transactionTable td, #transactionTable th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #transactionTable tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #transactionTable tr:hover {background-color: #ddd;}
-  #transactionTable th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #907163;
-    color: white;
   }
   
