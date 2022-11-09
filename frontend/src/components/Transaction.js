@@ -47,7 +47,6 @@ export default function Transaction() {
     const [customerNumber,setCustomerNumber]=useState();
     const [transactionNumber, setTransactionNumber] = useState();
     const [accountNumber, setAccountNumber] = useState();
-    // const [dateOfTransaction, setDateOfTransaction] = useState();
     const [transactionType, setTransactionType] = useState(); 
     const [mediumOfTransaction, setMediumOfTransaction]=useState();
     const [transactionAmount, setTransactionAmount]=useState();
@@ -62,10 +61,6 @@ export default function Transaction() {
           <div className="input-field">
             <label for="Customer number">Customer number:</label>
             {customerNumber}
-          </div>
-          <div className="input-field">
-            <label for="Transaction Number">Transaction Number:</label> 
-            <input type="text" required onChange={e=>setTransactionNumber(e.target.value)}/>
           </div>
           <div className="input-field">
             <label for="Account Number">Account Number</label>

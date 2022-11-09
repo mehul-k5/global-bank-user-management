@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 
 
@@ -14,7 +14,8 @@ import javax.persistence.GeneratedValue;
 @Table(name="transaction_details")
 public class TransactionDetails {
 	@Id
-	String transaction_number;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	int transaction_number;
 	@Column
 	String account_number;
 	@Column
@@ -26,7 +27,7 @@ public class TransactionDetails {
 	@Column
 	int transaction_amount;
 	
-	public void setTransaction_number(String transaction_number) {
+	public void setTransaction_number(int transaction_number) {
 		this.transaction_number = transaction_number;
 	}
 	public void setAccount_number(String account_number) {
@@ -45,7 +46,7 @@ public class TransactionDetails {
 		this.transaction_amount = transaction_amount;
 	}
 	
-	public String getTransaction_number() {
+	public int getTransaction_number() {
 		return this.transaction_number;
 	}
 	public String getAccount_number() {
@@ -64,7 +65,7 @@ public class TransactionDetails {
 		return this.transaction_amount;
 	}
 	
-	public TransactionDetails(String transaction_number, String account_number, 
+	public TransactionDetails(int transaction_number, String account_number, 
 			Date date_of_transaction, String medium_of_transaction, String transaction_type, int transaction_amount) {
 		super();
 		this.transaction_number = transaction_number;
